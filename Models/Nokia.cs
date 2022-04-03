@@ -1,4 +1,5 @@
-﻿using GOF.Creational.Contracts;
+﻿using GOF.Contracts;
+using GOF.Creational.Contracts;
 
 namespace GOF.Models
 {

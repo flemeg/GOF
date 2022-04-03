@@ -1,4 +1,6 @@
-﻿namespace GOF.Creational.Contracts
+﻿using GOF.Contracts;
+
+namespace GOF.Creational.Contracts
 {
     internal interface IMobilePhone
     {
