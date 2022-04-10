@@ -5,6 +5,7 @@ using GOF.Creational.Contracts;
 using GOF.Creational.FactoryMethod;
 using GOF.Creational.Singleton;
 using GOF.Models;
+using GOF.Structural.Composite;
 using System;
 
 namespace GOF
@@ -32,7 +33,7 @@ namespace GOF
             Console.WriteLine($"{dish.GetMeal()}");
 
             #endregion
-        
+
             #region Prototype
 
             Person p1 = new Person();
@@ -89,6 +90,7 @@ namespace GOF
                     factory = new PlatinumFactory(500000, 1000);
                     break;
                 default:
+                    factory = new PlatinumFactory(500000, 1000);
                     break;
             }
 
@@ -116,6 +118,32 @@ namespace GOF
             Console.WriteLine(samsungClient.GetSmartPhoneModelDetails());
             Console.WriteLine(samsungClient.GetNormalPhoneModelDetails());
 
+            #endregion
+
+            #region Composite
+
+            // Client
+            Console.WriteLine("Composite");
+            var pen = new ProductLeaf("Pen", 1d);
+            var phone = new ProductLeaf("Phone", 60d);
+            var pc = new ProductLeaf("PC", 1500d);
+
+            var box = new ProductComposed();
+            box.Add(pen);
+            box.Add(phone);
+            box.Add(pc);
+            Console.WriteLine(box);
+            Console.WriteLine($"Total price: {box.GetPrice()}");
+
+            var newCar = new ProductLeaf("Car", 1333d);
+            var bike = new ProductLeaf("Bike", 60d);
+
+            var box2 = new ProductComposed();
+            box.Add(new[] { newCar, bike });
+
+            box.Add(box2);
+            Console.WriteLine(box);
+            Console.WriteLine($"Total price new box: {box.GetPrice()}");
             #endregion
 
         }
